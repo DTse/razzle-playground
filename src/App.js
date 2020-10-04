@@ -64,7 +64,7 @@ const App = () => {
                     })}
                 >
                     <div className={classes.drawerHeader} />
-                    <Routes />
+                    <Routes pages={state.pages}/>
                 </main>
             </div>
         </>
