@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Metas from "../components/Metas";
-
+/**
+ * Return the Home Component
+ * @return {component}
+ **/
 const Home = () => {
     const [data, setData] = useState();
 

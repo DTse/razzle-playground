@@ -2,6 +2,11 @@ import React, { useState, useEffect,memo } from "react";
 import axios from "axios";
 import Metas from "../components/Metas";
 
+/**
+ * Return the Page Component.
+ * @param {any} props
+ * @return {component}
+ **/
 const Page = memo((props) => {
     const [data, setData] = useState();
 

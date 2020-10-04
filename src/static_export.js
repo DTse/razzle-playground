@@ -6,6 +6,12 @@ export const render = (req, res) => {
   res.json({ html });
 };
 
+// TODO: find a dynamic way to create the static list
+/**
+ * Return the routes array.
+ * @param
+ * @return {array}
+ **/
 export const routes = () => {
   return [
       '/',

@@ -1,6 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
+/**
+ * Return the Meta tags Component.
+ * @param {string} metaDescription
+ * @param {string} metaTitle
+ * @param {string} title
+ * @param {string} metaImage
+ * @return {component}
+ **/
 const Metas = ({ metaDescription, metaTitle, title, metaImage }) => {
     return (
         <Helmet>
