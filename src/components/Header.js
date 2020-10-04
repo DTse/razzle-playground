@@ -1,23 +1,23 @@
-import React, { memo } from 'react';
-import clsx from 'clsx';
-import {useAppContext} from '../context/AppContext';
-import {withRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { memo } from "react";
+import clsx from "clsx";
+import { useAppContext } from "../context/AppContext";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from "@material-ui/icons/Menu";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     appBar: {
-        transition: theme.transitions.create(['margin', 'width'], {
+        transition: theme.transitions.create(["margin", "width"], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
-        transition: theme.transitions.create(['margin', 'width'], {
+        transition: theme.transitions.create(["margin", "width"], {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
@@ -34,27 +34,27 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
     },
     hide: {
-        display: 'none',
+        display: "none",
     },
     headerTitle: {
         fontSize: 26,
-        textTransform: "capitalize"
-    }
+        textTransform: "capitalize",
+    },
 }));
 
 /**
-   * Return the App Bar component.
-   * @param {object} location
-   * @return {any} img
-**/
-const Header = memo(({location}) => {
+ * Return the App Bar component.
+ * @param {object} location
+ * @return {any} img
+ **/
+const Header = memo(({ location }) => {
     const classes = useStyles();
     const { state, dispatch } = useAppContext();
 
-    const title = location.pathname.replace(/\//g,'');
+    const title = location.pathname.replace(/\//g, "");
 
     const handleDrawerOpen = () => {
-        dispatch({type: 'setOpen', value: true});
+        dispatch({ type: "setOpen", value: true });
     };
 
     return (
@@ -75,17 +75,15 @@ const Header = memo(({location}) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography className={classes.headerTitle} variant="h1" noWrap>
-                    { title ? title : 'Home' }
+                    {title ? title : "Home"}
                 </Typography>
             </Toolbar>
         </AppBar>
     );
 });
 
-
 Header.propTypes = {
     location: PropTypes.object,
 };
-
 
 export default withRouter(Header);
