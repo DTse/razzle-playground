@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,memo } from "react";
 import axios from "axios";
 import Metas from "../components/Metas";
 
-const Home = () => {
+const Page = memo((props) => {
     const [data, setData] = useState();
 
     useEffect(()=>{
-      axios.get('/page/home').then((res)=>{
+      axios.get('/page'+props.location.pathname).then((res)=>{
         setData( {...res.data[0]} );
       })
     },[]);
@@ -22,6 +22,6 @@ const Home = () => {
             <div dangerouslySetInnerHTML={{__html:data && data.content}}/>
         </>
     );
-};
+});
 
-export default Home;
+export default Page;
