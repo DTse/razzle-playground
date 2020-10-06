@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Metas from "../components/Metas";
 /**
  * Return the Home Component
+ * @param {object} data
  * @return {component}
  **/
-const Home = () => {
-    const [data, setData] = useState();
-
-    useEffect(()=>{
-      axios.get('/page/home').then((res)=>{
-        setData( {...res.data[0]} );
-      })
-    },[]);
-
+const Home = ({ data }) => {
     return (
         <>
             <Metas
@@ -21,8 +13,9 @@ const Home = () => {
                 metaTitle={data && data.meta_title}
                 title={data && data.title}
                 metaImage={data && data.meta_image}
+                slug={data && data.slug}
             />
-            <div dangerouslySetInnerHTML={{__html:data && data.content}}/>
+            <div dangerouslySetInnerHTML={{ __html: data && data.content }} />
         </>
     );
 };

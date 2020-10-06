@@ -1,4 +1,4 @@
-import React, { useState, useEffect,memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import axios from "axios";
 import Metas from "../components/Metas";
 
@@ -7,15 +7,7 @@ import Metas from "../components/Metas";
  * @param {any} props
  * @return {component}
  **/
-const Page = memo((props) => {
-    const [data, setData] = useState();
-
-    useEffect(()=>{
-      axios.get('/page'+props.location.pathname).then((res)=>{
-        setData( {...res.data[0]} );
-      })
-    },[]);
-
+const Page = memo(({ data }) => {
     return (
         <>
             <Metas
@@ -23,8 +15,9 @@ const Page = memo((props) => {
                 metaTitle={data && data.meta_title}
                 title={data && data.title}
                 metaImage={data && data.meta_image}
+                slug={data && data.slug}
             />
-            <div dangerouslySetInnerHTML={{__html:data && data.content}}/>
+            <div dangerouslySetInnerHTML={{ __html: data && data.content }} />
         </>
     );
 });

@@ -38,7 +38,7 @@ let reducer = (state, action) => {
  * @return {any}
  **/
 const AppContextProvider = memo((props) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, props.initData ? {...initialState, pages: props.initData} : initialState);
     const value = { state, dispatch };
 
     useEffect(() => {

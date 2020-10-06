@@ -12,9 +12,9 @@ import Page from "../pages/Page";
 const Routes = ({ pages }) => {
     return (
         <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={(props) => <Home data={pages.filter((page) => page.id === 1)[0]} {...props} />} />
             {pages.map((page) => (
-                <Route key={page.id} exact path={page.slug} component={Page} />
+                <Route key={page.id} exact path={page.slug} component={(props) => <Page data={page} {...props} />} />
             ))}
             <Route component={NotFound} />
         </Switch>
